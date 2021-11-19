@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+button{
+    background: skyblue;
+    color: white;
+    padding: 10px 15px;
+    font-size: 15px;
+    width: 130px;
+    text-align: center;
+    margin-left: 15px;
+    cursor: pointer;
+    border: 1px solid gray;
+    border-radius: 25px;
+}
+.block{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 450px;
+    width: 320px;
+    padding: 10px;
+    border: 1px solid gray;
+    background: linear-gradient(123deg,red,blue,);
+    border-radius: 25px;
+}
+button:disabled{
+    background: gray;
+    color:white;
+    cursor: not-allowed;
+    /* margin-left: 20px; */
+}

@@ -4,20 +4,25 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms'
-import  { NameEditorComponent } from './name-editor/name-editor.component';
-import { ProfileEditorComponent } from './profile-editor/profile-editor.component'
+import { FormsModule } from '@angular/forms';
+
+import { LoginComponent } from './component/login/login.component';
+import { RegisterComponent } from './component/register/register.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-     NameEditorComponent,
-     ProfileEditorComponent
+     LoginComponent,
+     RegisterComponent,
+     DashboardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
-   
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,39 @@
+<div class="wrapper">
+  <div class="block">
+    <form [formGroup]="login" (ngSubmit)="loginSubmit()">
+      <h2>Sign Up</h2>
+      <input type="email" placeholder="Enter Email" formControlName="email" class="inp" required />
+
+      <div *ngIf="f.email.touched && f.email.invalid" style="color: white; margin-left: 25px">
+        <div *ngIf="f.email.errors && f.email.errors.required">
+          Email is required.
+        </div>
+        <div *ngIf="f.email.errors && f.email.errors.email">
+          Please, enter valid email address.
+        </div>
+      </div>
+
+      <input type="password" placeholder="Enter Password" formControlName="password" class="inp" required />
+
+      <div *ngIf="f.password.touched && f.password.invalid" style="color: white; margin-left: 25px">
+        <div *ngIf="f.password.errors && f.password.errors.required">
+          Password is required
+        </div>
+        <div *ngIf="f.password.errors && f.password.errors.password">
+          Please, enter valid Password.
+        </div>
+        <div *ngIf="f.password.errors.minlength">
+          Password must be at least 6 Inputs
+        </div>
+        <div *ngIf="f.password.errors.maxlength">
+          Password must not exceed 15 Inputs
+        </div>
+      </div>
+
+      <div class="btns">
+        <button type="submit" [disabled]="login.invalid">Sign In</button>
+        <button (click)="goToSignUp()">Sign Up</button>
+      </div>
+    </form>
+  </div>
+</div>

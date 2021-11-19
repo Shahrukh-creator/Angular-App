@@ -1,0 +1,87 @@
+<div class="wrapper">
+  <div class="block">
+    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" novalidate>
+      <h2>Sign Up</h2>
+
+      <input
+        id="name"
+        type="text"
+        placeholder="Enter Name"
+        name="name"
+        #name="ngModel"
+        ngModel
+        class="inp"
+        required
+        minlength="6"
+        maxlength="15"
+      />
+
+      <div
+        *ngIf="name.touched && !name.valid"
+        style="color: white; margin-left: 25px"
+      >
+        <p>Invalid Input</p>
+        <div *ngIf="name.errors?.required">Name is required.</div>
+        <div *ngIf="name.errors?.minlength">
+          Name is minimum {{ name.errors?.minlength.requiredLength }} character.
+        </div>
+        <div *ngIf="name.errors?.maxlength">Name is maximum 10 character.</div>
+      </div>
+
+      <input
+        id="email"
+        type="email"
+        placeholder="Enter Email"
+        name="email"
+        #email="ngModel"
+        ngModel
+        class="inp"
+        email
+        required
+      />
+
+      <div
+        *ngIf="email.touched && !email.valid"
+        style="color: white; margin-left: 25px"
+      >
+        <p>Invalid email</p>
+        <div *ngIf="email.errors?.required">Email is required.</div>
+      </div>
+
+      <input
+        id="password"
+        type="password"
+        placeholder="Enter Password"
+        name="password"
+        #password="ngModel"
+        ngModel
+        class="inp"
+        required
+        minlength="6"
+        maxlength="15"
+      />
+
+      <div
+        *ngIf="password.touched && !password.valid"
+        style="color: white; margin-left: 25px"
+      >
+        <p>Invalid Password</p>
+        <div *ngIf="password.errors?.required">Password is required.</div>
+        <div *ngIf="password.errors?.minlength">
+          Password is minimum
+          {{ password.errors?.minlength.requiredLength }} character.
+        </div>
+        <div *ngIf="password.errors?.maxlength">
+          Password is maximum 10 character.
+        </div>
+      </div>
+
+      <div class="btns">
+        <button class="btn2" [disabled]="myForm.invalid" type="submit">
+          Sign Up
+        </button>
+        <button type="button" (click)="goToSignIn()">Sign In</button>
+      </div>
+    </form>
+  </div>
+</div>
