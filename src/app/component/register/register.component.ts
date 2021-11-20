@@ -7,14 +7,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
+
+  myid: any
+  Myid: any
+
   constructor(private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // localStorage.clear();
+  }
 
   onSubmit(data: any) {
+    localStorage.setItem("name",JSON.stringify(data.value.name));
+    localStorage.setItem("email",JSON.stringify(data.value.email));
+    localStorage.setItem("password",JSON.stringify(data.value.password));
+
     console.log(data.value);
+
   }
   goToSignIn() {
+
     this.router.navigate(['login']);
   }
 }

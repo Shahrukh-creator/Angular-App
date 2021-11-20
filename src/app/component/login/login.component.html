@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="block">
     <form [formGroup]="login" (ngSubmit)="loginSubmit()">
-      <h2>Sign Up</h2>
+      <h2>Sign In</h2>
       <input type="email" placeholder="Enter Email" formControlName="email" class="inp" required />
 
       <div *ngIf="f.email.touched && f.email.invalid" style="color: white; margin-left: 25px">

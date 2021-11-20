@@ -9,10 +9,13 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   login: any = FormGroup;
+  Email: any
+  Password: any
 
   constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
+
     this.login = this.fb.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: [
@@ -31,12 +34,26 @@ export class LoginComponent implements OnInit {
   }
 
   loginSubmit() {
-    if (this.login.invalid) {
-      return;
-    }
+    // if (this.login.invalid) {
+    //   return;
+    // }
+   this.Email = localStorage.getItem("email");
+   this.Password = localStorage.getItem("password");
+   console.log(this.Email, " ", this.Password);
+   console.log(JSON.stringify(this.login.value.email));
+   console.log(JSON.stringify(this.login.value.password));
 
-    console.log(JSON.stringify(this.login.value, null, 2));
-    // console.log(data);
+   if(this.Email === JSON.stringify(this.login.value.email) && this.Password === JSON.stringify(this.login.value.password))
+   {
+         console.log("Welcome")
+         this.router.navigate(['dashboard']);
+
+   }
+   else{
+     console.log("Invalid Username or Password")
+
+   }
+
   }
 
   goToSignUp() {
