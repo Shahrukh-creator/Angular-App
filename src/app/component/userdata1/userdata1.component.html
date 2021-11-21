@@ -1,0 +1,20 @@
+<div class="col-md-12">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">User  Id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Body</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of Employee">
+        <td>{{employee.id}}</td>
+        <td>{{employee.userId}}</td>
+        <td>{{employee.title}}</td>
+        <td>{{employee.body}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
