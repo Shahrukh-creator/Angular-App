@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SignInData } from '../model/signIndata';
 import { Router } from '@angular/router';
+import { InterceptorService } from '../shared/interceptor.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +10,14 @@ export class AuthenticationService {
 
   //   Email= localStorage.getItem("email");
   //  Password= localStorage.getItem("password");
+  // let url = "localhost:3001/token/sign";
 
    private readonly mokedUser = new SignInData('shahrukh@gmail.com','shahrukh@1234')
 
   isAuthenticated = false;
+  token: string = ""
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private inter: InterceptorService) { }
 
   authenticate(signIndata: SignInData): boolean
   {
@@ -22,6 +25,12 @@ export class AuthenticationService {
     {
       this.isAuthenticated = true;
       console.log("Logged In");
+
+      this.inter.signIn().subscribe((data) =>{
+        this.token =  data.headers.Authorization;
+        console.log(this.token);
+
+      })
       this.router.navigate(['dashboard']);
 
       return true;

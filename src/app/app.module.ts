@@ -7,7 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import  { NetworkInterceptor } from './Interceptor/network.interceptor';
+import { NetworkInterceptor } from './Interceptor/network.interceptor';
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { MatSliderModule } from '@angular/material/slider';
@@ -53,12 +53,11 @@ import { Userdata2Component } from './component/userdata2/userdata2.component';
     MatProgressSpinnerModule,
   ],
   providers: [
-    //  PreviouslyUndefinedService,
     {
       provide: HTTP_INTERCEPTORS,
-    useClass: NetworkInterceptor,
-    multi: true
-    }
+      useClass: NetworkInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })
