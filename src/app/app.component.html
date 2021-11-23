@@ -1,1 +1,12 @@
+<mat-toolbar color="primary" *ngIf="auth.isAuthenticated">
+  <span><mat-icon>eco</mat-icon> My App</span>
+
+  <div class="spacer"></div>
+  <a [routerLink] ="['/dashboard']" mat-raised-button color="accent">Home</a>
+  <a [routerLink] ="['/userdata1']" mat-button>Profile</a>
+  <a [routerLink] ="['/employee-list']" mat-button>CRUD</a>
+  <a mat-button>About Us</a>
+  <a  (click)="logOut()" [routerLink] ="['/login']" mat-button>Sign Out</a>
+
+ </mat-toolbar>
 <router-outlet></router-outlet>

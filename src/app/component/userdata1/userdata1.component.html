@@ -1,20 +1,10 @@
-<div class="col-md-12">
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">User  Id</th>
-        <th scope="col">Title</th>
-        <th scope="col">Body</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let employee of Employee">
-        <td>{{employee.id}}</td>
-        <td>{{employee.userId}}</td>
-        <td>{{employee.title}}</td>
-        <td>{{employee.body}}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<mat-progress-spinner [mode] = "'indeterminate'" *ngIf = "loading$ | async"> </mat-progress-spinner>
+
+  <div class="card text-white container custom-container-2 bg-success mb-3 mt-3" *ngFor="let employee of Employee" style="max-width: 58rem;">
+
+    <div class="card-header"><button [routerLink]="['/userdata2', employee.id]" class = "btn btn-info">ID: {{employee.id}}</button></div>
+    <div class="card-body">
+      <h5 class="card-title">TITLE:  {{employee.title}}</h5>
+      <p class="card-text">{{employee.body}}</p>
+    </div>
+  </div>

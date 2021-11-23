@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../../authentication/authentication.service';
+import  { SignInData } from '../../model/signIndata';
+
 
 @Component({
   selector: 'app-login',
@@ -12,7 +15,7 @@ export class LoginComponent implements OnInit {
   Email: any
   Password: any
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private auth: AuthenticationService , private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
 
@@ -39,20 +42,24 @@ export class LoginComponent implements OnInit {
     // }
    this.Email = localStorage.getItem("email");
    this.Password = localStorage.getItem("password");
-   console.log(this.Email, " ", this.Password);
-   console.log(JSON.stringify(this.login.value.email));
-   console.log(JSON.stringify(this.login.value.password));
 
-   if(this.Email === JSON.stringify(this.login.value.email) && this.Password === JSON.stringify(this.login.value.password))
-   {
-         console.log("Welcome")
-         this.router.navigate(['dashboard']);
+   const signIndata = new SignInData(this.login.value.email, this.login.value.password);
+   this.auth.authenticate(signIndata);
 
-   }
-   else{
-     console.log("Invalid Username or Password")
+  //  console.log(this.Email, " ", this.Password);
+  //  console.log(JSON.stringify(this.login.value.email));
+  //  console.log(JSON.stringify(this.login.value.password));
 
-   }
+  //  if(this.Email === JSON.stringify(this.login.value.email) && this.Password === JSON.stringify(this.login.value.password))
+  //  {
+  //        console.log("Welcome")
+  //        this.router.navigate(['dashboard']);
+
+  //  }
+  //  else{
+  //    console.log("Invalid Username or Password")
+
+  //  }
 
   }
 

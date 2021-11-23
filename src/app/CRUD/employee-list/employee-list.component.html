@@ -1,0 +1,43 @@
+<mat-progress-spinner [mode] = "'indeterminate'" *ngIf = "loading$ | async"> </mat-progress-spinner>
+
+<div class="container custom-container-2">
+
+  <!-- Show it when there is no employee -->
+  <div class="no-data text-center mt-3" >
+    <button class="btn btn-outline-primary" routerLink="/employee-Create">Add Employee</button>
+  </div>
+
+  <!-- Employees list table, it hides when there is no employee -->
+  <div class="no-data text-center mt-3" *ngIf="Employee.length !== 0">
+    <h3 class="mb-3 text-center">Employees List</h3>
+
+    <div class="col-md-12">
+      <table class="table table-bordered table-hover mt-3">
+        <thead>
+          <tr>
+            <th scope="col">User Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of Employee">
+            <td>{{employee.id}}</td>
+            <td>{{employee.name}}</td>
+            <td>{{employee.email}}</td>
+            <td>{{employee.phone}}</td>
+            <td>
+              <button [routerLink]="['/employee-edit', employee.id]" class = "btn btn-info">Edit</button>
+              <button (click)="deleteEmployee(employee.id)"  class = "btn btn-danger">Delete</button>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>

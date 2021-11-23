@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PostDataService } from './post-data.service';
+import { RestApiService } from './rest-api.service';
 
-describe('PostDataService', () => {
-  let service: PostDataService;
+describe('RestApiService', () => {
+  let service: RestApiService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(PostDataService);
+    service = TestBed.inject(RestApiService);
   });
 
   it('should be created', () => {

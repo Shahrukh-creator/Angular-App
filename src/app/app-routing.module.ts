@@ -3,7 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { EmployeeCreateComponent } from './CRUD/employee-create/employee-create.component';
+import { EmployeeEditComponent } from './CRUD/employee-edit/employee-edit.component';
+import { EmployeeListComponent } from './CRUD/employee-list/employee-list.component';
 import { Userdata1Component } from './component/userdata1/userdata1.component';
+import { Userdata2Component } from './component/userdata2/userdata2.component';
+import { AuthGuard } from './guards/auth.guard';
+
 
 const routes: Routes = [
 
@@ -15,23 +21,53 @@ const routes: Routes = [
 
   {
   path:'login',
-  component:LoginComponent
+  component: LoginComponent,
+  // canActivate: [AuthGuard]
   },
 
   {
    path:'register',
-  component:RegisterComponent
+  component:RegisterComponent,
+  // canActivate: [AuthGuard]
   },
 
   {
    path:'dashboard',
-  component:DashboardComponent
+  component:DashboardComponent,
+  canActivate: [AuthGuard]
   },
 
   {
    path:'userdata1',
-  component:Userdata1Component
+  component:Userdata1Component,
+  canActivate: [AuthGuard]
   },
+
+  {
+   path:'userdata2/:id',
+  component:Userdata2Component,
+  canActivate: [AuthGuard]
+  },
+
+  {
+   path:'employee-Create',
+  component:EmployeeCreateComponent,
+  canActivate: [AuthGuard]
+  },
+
+  {
+   path:'employee-edit/:id',
+  component:EmployeeEditComponent,
+  canActivate: [AuthGuard]
+  },
+
+  {
+   path:'employee-list',
+  component:EmployeeListComponent,
+  canActivate: [AuthGuard]
+  },
+
+
 
   ];
 
