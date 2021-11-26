@@ -9,7 +9,8 @@ import { EmployeeListComponent } from './CRUD/employee-list/employee-list.compon
 import { Userdata1Component } from './component/userdata1/userdata1.component';
 import { Userdata2Component } from './component/userdata2/userdata2.component';
 import { AuthGuard } from './guards/auth.guard';
-
+import { AgGridComponent } from './ag-grid/ag-grid.component';
+import { InterceptorComponent } from './component/interceptor/interceptor.component';
 
 const routes: Routes = [
 
@@ -64,6 +65,18 @@ const routes: Routes = [
   {
    path:'employee-list',
   component:EmployeeListComponent,
+  canActivate: [AuthGuard]
+  },
+
+  {
+   path:'AgGridComponent',
+  component:AgGridComponent,
+  canActivate: [AuthGuard]
+  },
+
+  {
+   path:'InterceptorComponent',
+  component:InterceptorComponent,
   canActivate: [AuthGuard]
   },
 

@@ -29,9 +29,8 @@
             <td>{{employee.email}}</td>
             <td>{{employee.phone}}</td>
             <td>
-              <button [routerLink]="['/employee-edit', employee.id]" class = "btn btn-info">Edit</button>
-              <button (click)="deleteEmployee(employee.id)"  class = "btn btn-danger">Delete</button>
-
+              <app-button [buttontext]= "'Edit'" [buttonClass] = "'btn btn-info'" (onClick)="routerToLink(employee.id)"></app-button>
+              <app-button [buttontext]= "'Delete'" [buttonClass] = "'btn btn-danger'" (onClick)="deleteEmployee(employee.id)"></app-button>
             </td>
           </tr>
         </tbody>

@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import "ag-grid-community/dist/styles/ag-grid.css";
+@import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+.ag-header-group-cell-label {
+  justify-content: center !important;
+}
 .wrapper{
     display: flex;
     justify-content: center;

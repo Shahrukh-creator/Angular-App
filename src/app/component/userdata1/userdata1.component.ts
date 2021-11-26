@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { RestApiService } from '../../shared/rest-api.service';
 import { LoadingService } from '../../shared/Loading/loading.service';
 
@@ -13,7 +13,7 @@ export class Userdata1Component implements OnInit {
   loading$ = this.loader.loading$;
 
   Employee: any = [];
-  constructor(private post: RestApiService, private loader:LoadingService) {
+  constructor(private router: Router,private post: RestApiService, private loader:LoadingService) {
     this.post.getPostData().subscribe((data) => {
       this.Employee = data;
       console.log(data);
@@ -23,6 +23,11 @@ export class Userdata1Component implements OnInit {
 
 
   ngOnInit(): void {}
+
+  routerToLink(id: any)
+  {
+    this.router.navigate(['/userdata2',id]);
+  }
 
 
 }

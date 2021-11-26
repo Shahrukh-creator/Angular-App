@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import  { RestApiService } from '../../shared/rest-api.service';
 import { LoadingService } from '../../shared/Loading/loading.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-list',
@@ -13,7 +14,7 @@ export class EmployeeListComponent implements OnInit {
 
    Employee: any = [];
 
-  constructor(public restApi: RestApiService,
+  constructor(private router: Router, public restApi: RestApiService,
     private loader:LoadingService) {
      this.loadEmployees()
    }
@@ -36,6 +37,11 @@ export class EmployeeListComponent implements OnInit {
         this.loadEmployees()
       })
     }
+  }
+
+  routerToLink(id: any)
+  {
+    this.router.navigate(['/employee-edit',id]);
   }
 
 

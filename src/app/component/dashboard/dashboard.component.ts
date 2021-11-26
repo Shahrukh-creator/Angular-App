@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
 
   title = "Welcome";
-  // Employee: any = [];
+   color = '';
   constructor() {}
 
   ngOnInit(): void {
