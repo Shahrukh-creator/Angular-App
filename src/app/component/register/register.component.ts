@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FirebaseService } from '../../shared/Firebase/firebase.service';
 
 @Component({
   selector: 'app-register',
@@ -8,23 +9,21 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  myid: any
-  Myid: any
-
-  constructor(private router: Router) {}
+  constructor(private router: Router,public firebaseService : FirebaseService) {}
 
   ngOnInit(): void {
-    // localStorage.clear();
   }
 
-  onSubmit(data: any) {
-    localStorage.setItem("name",JSON.stringify(data.value.name));
-    localStorage.setItem("email",JSON.stringify(data.value.email));
-    localStorage.setItem("password",JSON.stringify(data.value.password));
-
-    console.log(data.value);
+  async onSubmit(data: any) {
+     await this.firebaseService.signup(data.value.email,data.value.password)
+    if(this.firebaseService.isLoggedIn)
+    {
+      alert("Register SuccessFully");
+      console.log(data.value);
+    }
 
   }
+
   goToSignIn() {
 
     this.router.navigate(['login']);

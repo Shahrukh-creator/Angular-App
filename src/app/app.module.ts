@@ -19,6 +19,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AgGridModule } from 'ag-grid-angular';
 import { AgGridComponent } from './ag-grid/ag-grid.component';
 
+import { AngularFireModule } from "@angular/fire/compat";
+import { environment } from '../environments/environment';
+
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
@@ -61,6 +64,7 @@ import { ButtonComponent } from './button/button.component';
     MatButtonModule,
     MatProgressSpinnerModule,
     AgGridModule.withComponents([]),
+    AngularFireModule.initializeApp(environment.firebase),
 
   ],
   providers: [

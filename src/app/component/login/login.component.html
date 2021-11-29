@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper" *ngIf="!auth.isAuthenticated">
   <div class="block">
     <form [formGroup]="login" (ngSubmit)="loginSubmit()">
       <h2>Sign In</h2>
@@ -13,7 +13,9 @@
         </div>
       </div>
 
-      <input type="password" placeholder="Enter Password" formControlName="password" class="inp" required />
+      <input  type="password" placeholder="Enter Password" formControlName="password" class="inp" required />
+
+      <div *ngIf="credInvalid" style="color: white; margin-left: 25px">Invalid Username Or Password</div>
 
       <div *ngIf="f.password.touched && f.password.invalid" style="color: white; margin-left: 25px">
         <div *ngIf="f.password.errors && f.password.errors.required">

@@ -2,62 +2,76 @@ import { Injectable } from '@angular/core';
 import { SignInData } from '../model/signIndata';
 import { Router } from '@angular/router';
 import { InterceptorService } from '../shared/interceptor.service';
+import { FirebaseService } from '../shared/Firebase/firebase.service';
+import { Interface } from '../Interface/interface';
+
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthenticationService {
 
-  //   Email= localStorage.getItem("email");
-  //  Password= localStorage.getItem("password");
-  // let url = "localhost:3001/token/sign";
-
-   private readonly mokedUser = new SignInData('shahrukh@gmail.com','shahrukh@1234')
-
   isAuthenticated = false;
-  token: string = ""
+  token: Interface;
 
-  constructor(private router: Router, private inter: InterceptorService) { }
+  constructor(
+    private router: Router,
+    private inter: InterceptorService,
+    public firebaseService: FirebaseService
+  ) {}
 
-  authenticate(signIndata: SignInData): boolean
-  {
-    if(this.checkCredentials(signIndata))
-    {
-      this.isAuthenticated = true;
-      console.log("Logged In");
+  async authenticate(signIndata: SignInData): Promise<boolean> {
 
-      this.inter.signIn().subscribe((data) =>{
-        this.token =  data.headers.Authorization;
+    console.log(this.checkCredentials(signIndata));
+    const x = await this.checkCredentials(signIndata);
+    if (x) {
+
+      console.log("123");
+
+      this.inter.signIn().subscribe((data) => {
+        this.token = data.headers.Authorization;
         console.log(this.token);
-
-      })
+      });
       this.router.navigate(['dashboard']);
 
       return true;
     }
-    console.log("Incorrect Credentials");
+
+    console.log('Incorrect Credentials');
 
     this.isAuthenticated = false;
     return false;
   }
 
-  private checkCredentials(signIndata: SignInData): boolean{
-    return this.checkEmail(signIndata.getEmail()) && this.checkPassword(signIndata.getPassword())
+  private checkCredentials(signIndata: SignInData): Promise<boolean> {
+     return this.firebaseService.signin(
+      signIndata.getEmail(),
+      signIndata.getPassword()
+    ).then(res => {
+      if (this.firebaseService.isLoggedIn) {
+      this.isAuthenticated = true;
+      console.log('Logged In');
+      return true;
+      }
+      else{
+        return false;
+      }
+    })
+
+
   }
 
-  private checkEmail(email: string): boolean{
-    return email === this.mokedUser.getEmail();
+  logOut() {
+    this.firebaseService.logout();
+    if (!this.firebaseService.isLoggedIn){
+      this.isAuthenticated = false;
+      console.log("Logged Out");
 
-  }
+      this.router.navigate(['']);
+    }
+    else{
+      alert("User Not Logged In!");
+    }
 
-   private checkPassword(password: string): boolean{
-     return password === this.mokedUser.getPassword();
-
-  }
-
-  logOut()
-  {
-    this.isAuthenticated = false;
-    this.router.navigate(['']);
   }
 }

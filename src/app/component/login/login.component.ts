@@ -14,8 +14,10 @@ export class LoginComponent implements OnInit {
   login: any = FormGroup;
   Email: any
   Password: any
+  invalidStatus: boolean;
+  credInvalid = false;
 
-  constructor(private auth: AuthenticationService , private fb: FormBuilder, private router: Router) {}
+  constructor(public auth: AuthenticationService , private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
 
@@ -37,30 +39,28 @@ export class LoginComponent implements OnInit {
   }
 
   loginSubmit() {
-    // if (this.login.invalid) {
-    //   return;
-    // }
-   this.Email = localStorage.getItem("email");
-   this.Password = localStorage.getItem("password");
 
-   const signIndata = new SignInData(this.login.value.email, this.login.value.password);
-   this.auth.authenticate(signIndata);
+  if(this.login.invalid)
+  {
+    this.credInvalid = true;
+  }
+  this.checkCredentials();
 
-  //  console.log(this.Email, " ", this.Password);
-  //  console.log(JSON.stringify(this.login.value.email));
-  //  console.log(JSON.stringify(this.login.value.password));
+  }
 
-  //  if(this.Email === JSON.stringify(this.login.value.email) && this.Password === JSON.stringify(this.login.value.password))
-  //  {
-  //        console.log("Welcome")
-  //        this.router.navigate(['dashboard']);
+  private async checkCredentials()
+  {
+     const signIndata = new SignInData(this.login.value.email, this.login.value.password);
+     this.invalidStatus = await this.auth.authenticate(signIndata);
+     console.log('sada', this.invalidStatus)
 
-  //  }
-  //  else{
-  //    console.log("Invalid Username or Password")
 
-  //  }
+   if(!this.invalidStatus)
+   {
+      console.log('heloo',this.invalidStatus);
 
+     this.credInvalid = true;
+   }
   }
 
   goToSignUp() {
