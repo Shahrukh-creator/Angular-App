@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { SignInData } from '../model/signIndata';
+import { Injectable, NgZone } from '@angular/core';
+import { SignInData } from '../../Utilities/model/signIndata';
 import { Router } from '@angular/router';
-import { InterceptorService } from '../shared/interceptor.service';
-import { FirebaseService } from '../shared/Firebase/firebase.service';
-import { Interface } from '../Interface/interface';
+import { InterceptorService } from '../InterceptorService/interceptor.service';
+import { FirebaseService } from '../Firebase/firebase.service';
+import { Interface } from '../../Utilities/Interface/interface';
 
 
 @Injectable({
@@ -13,6 +13,7 @@ export class AuthenticationService {
 
   isAuthenticated = false;
   token: Interface;
+  public ngZone: NgZone;
 
   constructor(
     private router: Router,
@@ -20,9 +21,28 @@ export class AuthenticationService {
     public firebaseService: FirebaseService
   ) {}
 
+  async displayGoogleLogin(){
+
+    const res = await this.firebaseService.GoogleAuth();
+    console.log("status",res);
+
+
+    if(res)
+    {
+       this.isAuthenticated = true;
+       this.router.navigate(['dashboard']);
+        //  this.ngZone.run(() => {
+
+        // })
+    }else{
+      this.isAuthenticated = false;
+      alert("Invalid Authorization")
+    }
+  }
+
   async authenticate(signIndata: SignInData): Promise<boolean> {
 
-    console.log(this.checkCredentials(signIndata));
+    // console.log(this.checkCredentials(signIndata));
     const x = await this.checkCredentials(signIndata);
     if (x) {
 
@@ -43,8 +63,8 @@ export class AuthenticationService {
     return false;
   }
 
-  private checkCredentials(signIndata: SignInData): Promise<boolean> {
-     return this.firebaseService.signin(
+  private async checkCredentials(signIndata: SignInData): Promise<boolean> {
+     return await this.firebaseService.signin(
       signIndata.getEmail(),
       signIndata.getPassword()
     ).then(res => {

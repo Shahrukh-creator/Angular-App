@@ -1,15 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './component/login/login.component';
-import { RegisterComponent } from './component/register/register.component';
-import { DashboardComponent } from './component/dashboard/dashboard.component';
-import { EmployeeCreateComponent } from './CRUD/employee-create/employee-create.component';
-import { EmployeeEditComponent } from './CRUD/employee-edit/employee-edit.component';
-import { EmployeeListComponent } from './CRUD/employee-list/employee-list.component';
-import { Userdata1Component } from './component/userdata1/userdata1.component';
-import { Userdata2Component } from './component/userdata2/userdata2.component';
+
+import { LoginComponent } from './component/Authentication/login/login.component';
+import { RegisterComponent } from './component/Authentication/register/register.component';
+import { DashboardComponent } from './component/Authentication/dashboard/dashboard.component';
+import { ForgotPasswordComponent } from './component/Authentication/forgot-password/forgot-password.component';
+
+import { EmployeeCreateComponent } from './component/CRUD/employee-create/employee-create.component';
+import { EmployeeEditComponent } from './component/CRUD/employee-edit/employee-edit.component';
+import { EmployeeListComponent } from './component/CRUD/employee-list/employee-list.component';
+
+import { Userdata1Component } from './component/ProfileDisplay/userdata1/userdata1.component';
+import { Userdata2Component } from './component/ProfileDisplay/userdata2/userdata2.component';
+
 import { AuthGuard } from './guards/auth.guard';
-import { AgGridComponent } from './ag-grid/ag-grid.component';
+
+import { AgGridComponent } from './component/ag-grid/ag-grid.component';
+
 import { InterceptorComponent } from './component/interceptor/interceptor.component';
 
 const routes: Routes = [
@@ -78,6 +85,12 @@ const routes: Routes = [
    path:'InterceptorComponent',
   component:InterceptorComponent,
   canActivate: [AuthGuard]
+  },
+
+  {
+   path:'ForgotPasswordComponent',
+  component:ForgotPasswordComponent,
+  // canActivate: [AuthGuard]
   },
 
 

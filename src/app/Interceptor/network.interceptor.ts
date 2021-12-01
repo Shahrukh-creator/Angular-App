@@ -9,7 +9,7 @@ import {
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators'
 import { LoadingService } from '../shared/Loading/loading.service';
-import { AuthenticationService } from '../authentication/authentication.service';
+import { AuthenticationService } from '../shared/authentication/authentication.service';
 
 
 @Injectable()

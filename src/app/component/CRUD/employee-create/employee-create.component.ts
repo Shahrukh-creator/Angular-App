@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import  { RestApiService } from '../../shared/rest-api.service';
-import { LoadingService } from '../../shared/Loading/loading.service';
+import  { RestApiService } from '../../../shared/RestApiService/rest-api.service';
+import { LoadingService } from '../../../shared/Loading/loading.service';
 
 @Component({
   selector: 'app-employee-create',
@@ -11,7 +11,7 @@ import { LoadingService } from '../../shared/Loading/loading.service';
 export class EmployeeCreateComponent implements OnInit {
   loading$ = this.loader.loading$;
 
-   @Input() employeeDetails = { name: '', email: '', phone: 0 }
+   employeeDetails = { name: '', email: '', phone: 0 }
 
   constructor(
     public restApi: RestApiService,

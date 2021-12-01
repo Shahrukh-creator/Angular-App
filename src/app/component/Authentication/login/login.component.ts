@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../../authentication/authentication.service';
-import  { SignInData } from '../../model/signIndata';
+import { AuthenticationService } from '../../../shared/authentication/authentication.service';
+import  { SignInData } from '../../../Utilities/model/signIndata';
+import { FirebaseService } from '../../../shared/Firebase/firebase.service';
+
 
 
 @Component({
@@ -38,6 +40,11 @@ export class LoginComponent implements OnInit {
     return this.login.controls;
   }
 
+  loginGoogle()
+  {
+    this.auth.displayGoogleLogin();
+  }
+
   loginSubmit() {
 
   if(this.login.invalid)
@@ -65,5 +72,8 @@ export class LoginComponent implements OnInit {
 
   goToSignUp() {
     this.router.navigate(['register']);
+  }
+  goToResetPassword() {
+    this.router.navigate(['ForgotPasswordComponent']);
   }
 }

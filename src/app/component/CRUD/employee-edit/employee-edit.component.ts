@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import  { RestApiService } from '../../shared/rest-api.service';
-import { LoadingService } from '../../shared/Loading/loading.service';
+import  { RestApiService } from '../../../shared/RestApiService/rest-api.service';
+import { LoadingService } from '../../../shared/Loading/loading.service';
 
 @Component({
   selector: 'app-employee-edit',

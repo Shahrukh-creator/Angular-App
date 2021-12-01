@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FirebaseService } from '../../shared/Firebase/firebase.service';
+import { FirebaseService } from '../../../shared/Firebase/firebase.service';
 
 @Component({
   selector: 'app-register',
@@ -16,11 +16,7 @@ export class RegisterComponent implements OnInit {
 
   async onSubmit(data: any) {
      await this.firebaseService.signup(data.value.email,data.value.password)
-    if(this.firebaseService.isLoggedIn)
-    {
-      alert("Register SuccessFully");
       console.log(data.value);
-    }
 
   }
 
