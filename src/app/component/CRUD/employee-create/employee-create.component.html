@@ -2,7 +2,7 @@
 
 <div class="container custom-container">
   <div class="col-md-12">
-    <h3 class="mb-3 no-data text-center mt-3">Create Employee</h3>
+    <h3 class="mb-3 no-data text-center mt-3">{{'ADD EMPLOYEE' | translate}}</h3>
 
     <div class="form-group">
       <input type="text" [(ngModel)]="employeeDetails.name" class="form-control" placeholder="Name">
@@ -17,7 +17,7 @@
     </div>
 
     <div class="form-group no-data text-center mt-3">
-      <app-button [buttontext]= "'Create Employee'" [buttonClass] = "'btn btn-success'" (onClick)="addEmployee()"></app-button>
+      <app-button buttontext = "{{'ADD EMPLOYEE' | translate}}" [buttonClass] = "'btn btn-success'" (onClick)="addEmployee()"></app-button>
     </div>
 
   </div>

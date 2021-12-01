@@ -1,0 +1,33 @@
+{
+  "choose_language": "Choose language",
+  "language.english": "English",
+  "language.urdu": "Urdu",
+  "SIGN IN": "Sign In",
+  "SIGN UP":"Sign Up",
+  "ENTER EMAIL": "Enter Email",
+  "ENTER PASSWORD": "Enter Password",
+  "ENTER NAME": "Enter Name",
+  "WELCOME": "Welcome To Angular App",
+  "MY APP": "My App",
+  "HOME": "Home",
+  "PROFILE":"Profile",
+  "CRUD":"CRUD",
+  "AG_GRID":"AgGrid",
+  "INTERCEPTOR":"Interceptor",
+  "SIGN OUT": "Sign Out",
+  "ADD EMPLOYEE":"Add Employee",
+  "EMPLOYEE LIST": "Employees List",
+  "EDIT":"Edit",
+  "DELETE":"Delete",
+  "UPDATE EMPLOYEE":"Update Employee",
+  "USER ID":"User Id",
+  "ID":"Id",
+  "NAME":"Name",
+  "EMAIL":"Email",
+  "PHONE":"Phone",
+  "ACTION":"Action",
+  "GET ACCESS":"Get Access",
+  "SELECTED ROW": "Selected Row"
+
+
+}

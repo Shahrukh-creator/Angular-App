@@ -4,8 +4,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../../../shared/authentication/authentication.service';
 import  { SignInData } from '../../../Utilities/model/signIndata';
 import { FirebaseService } from '../../../shared/Firebase/firebase.service';
-
-
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +18,10 @@ export class LoginComponent implements OnInit {
   invalidStatus: boolean;
   credInvalid = false;
 
-  constructor(public auth: AuthenticationService , private fb: FormBuilder, private router: Router) {}
+  constructor(public auth: AuthenticationService,
+  private fb: FormBuilder,
+  private router: Router,
+  private translateService: TranslateService) {}
 
   ngOnInit(): void {
 
@@ -76,4 +78,8 @@ export class LoginComponent implements OnInit {
   goToResetPassword() {
     this.router.navigate(['ForgotPasswordComponent']);
   }
+   public selectLanguage(event: any) {
+    this.translateService.use(event.target.value);
+  }
+
 }

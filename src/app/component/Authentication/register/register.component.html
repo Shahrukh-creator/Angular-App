@@ -1,12 +1,12 @@
 <div class="wrapper">
   <div class="block">
     <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" novalidate>
-      <h2>Sign Up</h2>
+      <h2>{{'SIGN UP' | translate}}</h2>
 
       <input
         id="name"
         type="text"
-        placeholder="Enter Name"
+        placeholder= "{{'ENTER NAME' | translate | uppercase}}"
         name="name"
         #name="ngModel"
         ngModel
@@ -31,7 +31,7 @@
       <input
         id="email"
         type="email"
-        placeholder="Enter Email"
+        placeholder="{{'ENTER EMAIL' | translate | uppercase }}"
         name="email"
         #email="ngModel"
         ngModel
@@ -51,7 +51,7 @@
       <input
         id="password"
         type="password"
-        placeholder="Enter Password"
+        placeholder="{{'ENTER PASSWORD' | translate | uppercase }}"
         name="password"
         #password="ngModel"
         ngModel
@@ -78,9 +78,9 @@
 
       <div class="btns">
         <button class="btn2" [disabled]="myForm.invalid" type="submit">
-          Sign Up
+          {{'SIGN UP' | translate}}
         </button>
-        <button type="button" (click)="goToSignIn()">Sign In</button>
+        <button type="button" (click)="goToSignIn()">{{'SIGN IN' | translate}}</button>
       </div>
     </form>
 

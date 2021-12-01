@@ -1,4 +1,4 @@
-<app-button [buttontext]= "'Selected Row'" [buttonClass] = "'btn-success'" (onClick)="getSelectedRows()" ></app-button>
+<app-button buttontext = "{{'SELECTED ROW' | translate}}"  [buttonClass] = "'btn-success'" (onClick)="getSelectedRows()" ></app-button>
 <!-- <button mat-raised-button color (click)="getSelectedRows()">Selected Row</button> -->
 <ag-grid-angular
 	style="width: 100%; height: 100vh;"

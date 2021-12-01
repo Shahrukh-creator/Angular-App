@@ -5,9 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NetworkInterceptor } from './Interceptor/network.interceptor';
+import { NetworkInterceptor } from './Utilities/Interceptor/network.interceptor';
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { MatSliderModule } from '@angular/material/slider';
@@ -38,7 +38,13 @@ import { ButtonComponent } from './component/button/button.component';
 import { InterceptorComponent } from './component/interceptor/interceptor.component';
 import { HighlightDirective } from './Directive/highlight.directive';
 
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 
 @NgModule({
@@ -72,6 +78,14 @@ import { HighlightDirective } from './Directive/highlight.directive';
     MatProgressSpinnerModule,
     AgGridModule.withComponents([]),
     AngularFireModule.initializeApp(environment.firebase),
+   TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+  })
 
   ],
   providers: [

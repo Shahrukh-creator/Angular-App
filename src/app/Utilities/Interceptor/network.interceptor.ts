@@ -8,8 +8,8 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators'
-import { LoadingService } from '../shared/Loading/loading.service';
-import { AuthenticationService } from '../shared/authentication/authentication.service';
+import { LoadingService } from '../../shared/Loading/loading.service';
+import { AuthenticationService } from '../../shared/authentication/authentication.service';
 
 
 @Injectable()

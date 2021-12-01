@@ -3,10 +3,13 @@
   <div class="card text-white container custom-container-2 bg-success mb-3 mt-3" *ngFor="let employee of Employee" style="max-width: 58rem;">
 
     <div class="card-header">
-      <app-button buttontext= "ID: {{employee.id}}" [buttonClass] = "'btn btn-info'" (onClick)="routerToLink(employee.id)"></app-button>
+      <app-button buttontext= "{{'ID' | translate}}: {{employee.id}}"  [buttonClass] = "'btn btn-info'" (onClick)="routerToLink(employee.id)"></app-button>
     </div>
     <div class="card-body">
       <h5 class="card-title">TITLE:  {{employee.title}}</h5>
       <p class="card-text">{{employee.body}}</p>
     </div>
   </div>
+
+
+  <!-- "ID: {{employee.id}}" -->

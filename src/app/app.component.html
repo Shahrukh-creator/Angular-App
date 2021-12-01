@@ -1,13 +1,13 @@
 <mat-toolbar color="primary" *ngIf="auth.isAuthenticated">
-  <span><mat-icon>eco</mat-icon> My App</span>
+  <span><mat-icon>eco</mat-icon> {{'MY APP' | translate}}</span>
 
   <div class="spacer"></div>
-  <a [routerLink] ="['/dashboard']" mat-raised-button color="accent">Home</a>
-  <a [routerLink] ="['/userdata1']" mat-button>Profile</a>
-  <a [routerLink] ="['/employee-list']" mat-button>CRUD</a>
-  <a [routerLink] ="['/AgGridComponent']" mat-button>AgGrid</a>
-  <a [routerLink] ="['/InterceptorComponent']" mat-button>Interceptor</a>
-  <a  (click)="logOut()" [routerLink] ="['/login']" mat-button>Sign Out</a>
+  <a [routerLink] ="['/dashboard']" mat-raised-button color="accent">{{'HOME' | translate}}</a>
+  <a [routerLink] ="['/userdata1']" mat-button>{{'PROFILE' | translate}}</a>
+  <a [routerLink] ="['/employee-list']" mat-button>{{'CRUD' | translate}}</a>
+  <a [routerLink] ="['/AgGridComponent']" mat-button>{{'AG_GRID' | translate}}</a>
+  <a [routerLink] ="['/InterceptorComponent']" mat-button>{{'INTERCEPTOR' | translate}}</a>
+  <a  (click)="logOut()" [routerLink] ="['/login']" mat-button>{{'SIGN OUT' | translate}}</a>
 
  </mat-toolbar>
 <router-outlet></router-outlet>
