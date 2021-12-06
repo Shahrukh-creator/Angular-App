@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -88,6 +88,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   })
 
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
