@@ -18,10 +18,13 @@ export class InterceptorComponent implements OnInit {
     this.inter
       .getPath()
       .subscribe((data) => {
+            console.log(data);
         this.text = data.msg;
         console.log( this.text);
+
       },
       (error) =>{
+
         this.text = error.statusText;
         console.log("Incoming: ",this.text);
       }

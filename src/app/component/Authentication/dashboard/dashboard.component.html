@@ -1,7 +1,11 @@
-<div class="no-data text-center mt-3">
+
+<div class="no-data text-center">
+  <img src="assets/images/img1.png">
+ </div>
+
+ <div class="no-data text-center mt-3">
   <input type="radio" name="colors" (click)="color='lightgreen'">Green
   <input type="radio" name="colors" (click)="color='yellow'">Yellow
   <input type="radio" name="colors" (click)="color='cyan'">Cyan
   <p [appHighlight]="color" defaultColor="violet" class=" mt-3">{{'WELCOME' | translate}} Angular</p>
 </div>
-
