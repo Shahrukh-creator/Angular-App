@@ -19,33 +19,46 @@ export class AgGridComponent implements OnInit {
   title = 'app';
 
   columnDefs: ColDef[] = [
-    {
-      headerName: 'ID',
-      field: 'id',
-      sortable: true,
-      filter: true,
-      checkboxSelection: true,
-    },
-    { headerName: 'Title', field: 'title', sortable: true, filter: true },
-    { headerName: 'Body', field: 'body', sortable: true, filter: true },
+    // {
+    //   headerName: 'Number',
+    //   field: 'id',
+    //   sortable: true,
+    //   filter: true,
+    //   checkboxSelection: true,
+    // },
+    { headerName: 'Id', field: 'id', sortable: true, filter: true, checkboxSelection: true,},
+    { headerName: 'Name', field: 'name', sortable: true, filter: true },
+    { headerName: 'Color', field: 'color', sortable: true, filter: true },
+    { headerName: 'Year', field: 'year', sortable: true, filter: true },
+    { headerName: 'Pantone_value', field: 'pantone_value', sortable: true, filter: true },
   ];
 
-  rowData: Observable<any[]>;
+  rowData: any[];
+  fullObject: any;
 
   constructor(private http: HttpClient) {
-    this.rowData = this.http.get<any[]>(
-      'https://jsonplaceholder.typicode.com/posts'
-    );
+
+
+
     this.gridOptions = <GridOptions>{};
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.http.get<any>(
+      'https://reqres.in/api/products/'
+    ).subscribe(data => {
+      // this.fullObject = data;
+      // console.log(this.fullObject);
+      this.rowData = data.data;
+      console.log(this.rowData);
+    }, err => console.log(err));
+  }
 
   getSelectedRows(): void {
     const selectedNodes = this.agGrid.api.getSelectedNodes();
     const selectedData = selectedNodes.map((node) => node.data);
     const selectedDataStringPresentation = selectedData
-      .map((node) => `${node.title} ${node.body}`)
+      .map((node) => `${node.id} ${node.name}`)
       .join(', ');
     alert(`Selected nodes: ${selectedDataStringPresentation}`);
   }

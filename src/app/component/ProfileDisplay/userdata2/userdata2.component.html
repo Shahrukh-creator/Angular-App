@@ -1,10 +1,12 @@
 <mat-progress-spinner [mode] = "'indeterminate'" *ngIf = "loading$ | async"> </mat-progress-spinner>
 <div class="card text-white container custom-container-2 bg-success mb-3 mt-3" *ngFor="let employee of Employee" style="max-width: 58rem;">
   <div class="card-header">
-    <app-button buttontext = "{{'ID' | translate}}: {{employee.id}}" [buttonClass] = "'btn btn-info'"></app-button>
+    <app-button buttontext = "{{'ID' | translate}}: {{employee.data.id}}" [buttonClass] = "'btn btn-info'"></app-button>
   </div>
   <div class="card-body">
-    <h5 class="card-title">TITLE:  {{employee.title}}</h5>
-    <p class="card-text">{{employee.body}}</p>
+    <p class="card-text">Name:  {{employee.data.name}}</p>
+    <p class="card-text">Year:  {{employee.data.year}}</p>
+    <p class="card-text">Color:  {{employee.data.color}}</p>
+    <p class="card-text">Pantone_value":  {{employee.data.pantone_value}}</p>
   </div>
 </div>

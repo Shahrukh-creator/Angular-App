@@ -2,12 +2,39 @@
 
   <div class="card text-white container custom-container-2 bg-success mb-3 mt-3" *ngFor="let employee of Employee" style="max-width: 58rem;">
 
-    <div class="card-header">
+    <!-- <div class="card-header">
       <app-button buttontext= "{{'ID' | translate}}: {{employee.id}}"  [buttonClass] = "'btn btn-info'" (onClick)="routerToLink(employee.id)"></app-button>
-    </div>
+    </div> -->
+
     <div class="card-body">
-      <h5 class="card-title">TITLE:  {{employee.title}}</h5>
-      <p class="card-text">{{employee.body}}</p>
+      <!-- <h5 class="card-title">TITLE:  {{employee.title}}</h5> -->
+      <!-- <p class="card-text">{{employee.body}}</p> -->
+      <h5 class="card-title">
+        <p>Page: {{employee.page}}</p>
+        <p>per_page: {{employee.per_page}}</p>
+        <p>total: {{employee.total}}</p>
+        <p>total_pages: {{employee.total_pages}}</p>
+      </h5>
+
+      <!-- <p>Id: {{employee.data[0].id}}</p>
+      <p>name: {{employee.data[0].name}}</p> -->
+
+
+      <h5 *ngFor="let key of employee.data" >
+
+        <div class="card-header">
+          <app-button buttontext= "{{'ID' | translate}}: {{key.id}}"  [buttonClass] = "'btn btn-info'" (onClick)="routerToLink(key.id)"></app-button>
+        </div>
+
+        <!-- <p>Id: {{key.id}}</p> -->
+        <p>name: {{key.name}}</p>
+        <p>year: {{key.year}}</p>
+        <p>pantone_value: {{key.pantone_value}}</p>
+      </h5>
+
+      <p>support: {{employee.support.url}}</p>
+      <p>support: {{employee.support.text}}</p>
+
     </div>
   </div>
 

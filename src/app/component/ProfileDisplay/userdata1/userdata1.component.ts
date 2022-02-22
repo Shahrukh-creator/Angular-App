@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestApiService } from '../../../shared/RestApiService/rest-api.service';
 import { LoadingService } from '../../../shared/Loading/loading.service';
+import { ColumnGroup } from 'ag-grid-community';
 
 @Component({
   selector: 'app-userdata1',
@@ -15,8 +16,11 @@ export class Userdata1Component implements OnInit {
   Employee: any = [];
   constructor(private router: Router,private post: RestApiService, private loader:LoadingService) {
     this.post.getPostData().subscribe((data) => {
-      this.Employee = data;
+      this.Employee.push(data);
       console.log(data);
+
+      // this.Employee = data;
+      // console.log(data);
     });
 
   }

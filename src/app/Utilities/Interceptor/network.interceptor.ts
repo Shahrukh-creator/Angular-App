@@ -23,6 +23,7 @@ export class NetworkInterceptor implements HttpInterceptor {
   intercept(
     request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     this.loader.show();
+
     request = request.clone({
       setHeaders:{
         Authorization: `${this.auth.token}`,
@@ -31,6 +32,8 @@ export class NetworkInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       finalize(()=>{
         this.loader.hide();
+        console.log("Loader runs");
+
       })
     )
   }

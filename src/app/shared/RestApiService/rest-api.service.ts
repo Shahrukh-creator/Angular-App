@@ -28,13 +28,15 @@ export class RestApiService {
 
   getPostData()
   {
-    let url = "https://jsonplaceholder.typicode.com/posts";
+    // let url = "https://jsonplaceholder.typicode.com/posts/";
+    let url = "https://reqres.in/api/products/";
     return this.http.get(url);
   }
 
   getSinglePostData(id: any): Observable<any>
   {
-    let url = "https://jsonplaceholder.typicode.com/posts/" + id;
+    // let url = "https://jsonplaceholder.typicode.com/posts/" + id;
+    let url = "https://reqres.in/api/products/" + id;
     return this.http.get(url);
   }
 
